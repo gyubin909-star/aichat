@@ -1,7 +1,7 @@
 {
   "name": "aichat",
   "version": "1.0.0",
-  "description": "AICHAT - AI assistant web app",
+  "description": "AiKoe - AI assistant web app",
   "type": "module",
   "main": "server.js",
   "scripts": { "start": "node server.js" },

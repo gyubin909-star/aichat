@@ -1,4 +1,4 @@
-// AICHAT backend: menyimpan API key di server (tidak pernah dikirim ke browser)
+// AiKoe backend: menyimpan API key di server (tidak pernah dikirim ke browser)
 import http from 'node:http';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -144,4 +144,4 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => console.log(`AICHAT berjalan di http://localhost:${PORT}`));
+server.listen(PORT, () => console.log(`AiKoe berjalan di http://localhost:${PORT}`));

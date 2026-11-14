@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#eaf3ff">
-<title>AICHAT</title>
+<title>AiKoe</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -237,7 +237,7 @@ button{cursor:pointer;background:none;border:0}
 <body>
 <div class="app">
   <aside class="side glass" id="side">
-    <div class="brand"><div class="logo">AI</div><h1>AI<span>CHAT</span></h1><button class="icon glass" id="collapse" aria-label="Tutup sidebar" title="Tutup sidebar (Ctrl+B)">«</button></div>
+    <div class="brand"><div class="logo">AI</div><h1>Ai<span>Koe</span></h1><button class="icon glass" id="collapse" aria-label="Tutup sidebar" title="Tutup sidebar (Ctrl+B)">«</button></div>
     <div class="cats" role="tablist" aria-label="Kategori">
       <button class="cat" id="catChat" role="tab" type="button">💬 Asisten</button>
       <button class="cat" id="catImage" role="tab" type="button">🎨 Gambar</button>
@@ -440,7 +440,7 @@ function setCategory(c) {
 
 function renderHeader() {
   const c = state.category, m = c === 'image' ? curImage() : c === 'video' ? curVideo() : cur();
-  $('#curName').textContent = m ? (c === 'image' ? '🎨 ' : c === 'video' ? '🎬 ' : '') + (c === 'video' ? (m._label || m.name) : m.name) : 'AICHAT';
+  $('#curName').textContent = m ? (c === 'image' ? '🎨 ' : c === 'video' ? '🎬 ' : '') + (c === 'video' ? (m._label || m.name) : m.name) : 'AiKoe';
   if (typeof updateNote === 'function') updateNote();
   if (typeof renderTray === 'function') renderTray(); // juga menyegarkan panel kontrol sesuai model aktif
 }
@@ -661,7 +661,7 @@ function renderFeed() {
   const feed = $('#feed'); feed.replaceChildren();
   if (!state.messages.length) {
     const w = el('div', 'welcome');
-    w.append(el('div', 'logo', 'AI'), el('h2', '', 'Halo, saya AICHAT'), el('p', '', state.category === 'image' ? 'Pilih model gambar, tulis deskripsinya, lalu atur rasio dan kualitas.' : state.category === 'video' ? 'Pilih model video, tulis deskripsinya (boleh lampirkan gambar sebagai acuan), lalu atur rasio dan durasi.' : 'Pilih model assistant lalu mulai ngobrol.'));
+    w.append(el('div', 'logo', 'AI'), el('h2', '', 'Halo, saya AiKoe'), el('p', '', state.category === 'image' ? 'Pilih model gambar, tulis deskripsinya, lalu atur rasio dan kualitas.' : state.category === 'video' ? 'Pilih model video, tulis deskripsinya (boleh lampirkan gambar sebagai acuan), lalu atur rasio dan durasi.' : 'Pilih model assistant lalu mulai ngobrol.'));
     const s = el('div', 'sugs');
     for (const t of (state.category === 'image' ? IMG_SUGGESTIONS : state.category === 'video' ? VID_SUGGESTIONS : SUGGESTIONS)) { const b = el('button', '', t); b.onclick = () => { $('#input').value = t; $('#input').focus(); }; s.append(b); }
     w.append(s); feed.append(w); return;
@@ -847,14 +847,14 @@ async function send(override) {
   let im = null;
   if (isImg) {
     const r = resolveImageModel(curImage(), files);
-    if (r.error) { state.messages.push({ role: 'assistant', model: 'AICHAT', error: r.error }); save(); renderFeed(); return; }
+    if (r.error) { state.messages.push({ role: 'assistant', model: 'AiKoe', error: r.error }); save(); renderFeed(); return; }
     im = r.model;
   }
   let vm = null;
   if (isVid) {
     const r = resolveVideoModel(curVideo(), files);
     if (r.note) return updateNote(r.note, 6000);
-    if (r.error) { state.messages.push({ role: 'assistant', model: 'AICHAT', error: r.error }); save(); renderFeed(); return; }
+    if (r.error) { state.messages.push({ role: 'assistant', model: 'AiKoe', error: r.error }); save(); renderFeed(); return; }
     vm = r.model;
   }
   state.busy = true; $('#send').disabled = true;
