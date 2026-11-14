@@ -81,23 +81,26 @@ async function readBuffer(req, max) {
 }
 
 async function readJson(req) {
+  req.setEncoding('utf8'); // decoder UTF-8 menjaga karakter multibyte (emoji, dll.) yang terbelah antar-chunk
   let s = '';
-  for await (const c of req) { s += c; if (s.length > 2e6) throw new Error('Payload terlalu besar'); }
-  return s ? JSON.parse(s) : {};
+  for await (const c of req) { s += c; if (s.length > 2e6) { const e = new Error('Payload terlalu besar'); e.status = 413; throw e; } }
+  try { return s ? JSON.parse(s) : {}; }
+  catch { const e = new Error('JSON tidak valid'); e.status = 400; throw e; }
 }
 
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   try {
     if (url.pathname === '/api/models' && req.method === 'GET') {
-      // Sidebar hanya memakai model teks; model gambar dipakai internal untuk permintaan membuat gambar
-      const t = url.searchParams.get('type') === 'image' ? 'image' : 'text';
+      // type=text (default) | image | video
+      const qt = url.searchParams.get('type');
+      const t = qt === 'image' || qt === 'video' ? qt : 'text';
       return send(res, 200, await callApi('GET', `/models?type=${t}`));
     }
 
     if (url.pathname === '/api/chat' && req.method === 'POST') {
       const { prompt, model, params, type: reqType } = await readJson(req);
-      const type = reqType === 'image' ? 'image' : 'text'; // hanya text/image (tanpa video/audio)
+      const type = reqType === 'image' || reqType === 'video' ? reqType : 'text'; // text / image / video
       if (!prompt) return send(res, 400, { error: { message: 'prompt wajib diisi' } });
       const project_id = await ensureProject();
       const body = { workspace_id: WS, project_id, type, prompt };
