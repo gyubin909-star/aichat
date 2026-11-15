@@ -45,28 +45,13 @@ button{cursor:pointer;background:none;border:0}
 
 .app{display:flex;height:100%;gap:14px;padding:14px;max-width:1500px;margin:0 auto}
 
-/* Sidebar */
-.side{width:320px;flex:none;border-radius:var(--radius);display:flex;flex-direction:column;overflow:hidden;transition:transform .3s ease,width .3s ease,margin .3s ease,opacity .25s ease,border-color .3s}
-.brand .icon{margin-left:auto;width:36px;height:36px;font-size:16px}
-@media (min-width:861px){
-  .side>*{min-width:318px}
-  #menu{display:none}
-  body.collapsed #menu{display:grid}
-  body.collapsed .side{width:0;margin-right:-14px;opacity:0;border-color:transparent;pointer-events:none}
-}
-.brand{display:flex;align-items:center;gap:10px;padding:18px 18px 8px}
+/* Logo */
 .logo{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-weight:800;color:#fff;
   background:linear-gradient(135deg,var(--sky),var(--blue-2));box-shadow:0 6px 18px var(--glow),inset 0 1px 0 rgba(255,255,255,.5)}
-.brand h1{font-size:20px;letter-spacing:.12em;font-weight:800;color:var(--text)}
-.brand h1 span{color:var(--blue)}
-.side-actions{padding:10px 14px;display:flex;flex-direction:column;gap:10px}
 .btn{padding:11px 14px;border-radius:13px;border:1px solid var(--line);background:var(--glass-2);transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;color:var(--text)}
 .btn:hover{border-color:var(--line-2);box-shadow:0 6px 18px rgba(47,123,255,.18)}
 .btn.primary{background:linear-gradient(135deg,#4aa0ff,var(--blue-2));color:#fff;border:0;box-shadow:0 8px 20px rgba(47,123,255,.35),inset 0 1px 0 rgba(255,255,255,.4)}
 .btn.primary:hover{filter:brightness(1.05);box-shadow:0 10px 26px rgba(47,123,255,.45),inset 0 1px 0 rgba(255,255,255,.4)}
-.cats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:4px 14px 0;padding:4px;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.5)}
-.cat{white-space:nowrap;padding:9px 4px;border-radius:11px;font-size:12.5px;font-weight:600;color:var(--muted);transition:.2s}
-.cat.on{background:#fff;color:var(--blue-2);box-shadow:0 4px 12px rgba(47,123,255,.18),inset 0 0 0 1px var(--line-2)}
 .model .note{display:block;color:var(--muted);font-size:11.5px;margin-top:3px}
 .miss{margin:2px 4px 6px;padding:9px 11px;border-radius:11px;font-size:12px;line-height:1.45;color:var(--warn);background:rgba(255,196,70,.14);border:1px dashed rgba(200,130,20,.45)}
 .search{width:100%;padding:11px 14px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.75);outline:none;transition:.2s}
@@ -75,6 +60,7 @@ button{cursor:pointer;background:none;border:0}
 .chip{padding:5px 11px;border-radius:99px;font-size:12px;border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.5)}
 .chip.on{background:rgba(47,123,255,.12);color:var(--blue-2);border-color:var(--line-2)}
 .models{flex:1;overflow-y:auto;padding:4px 10px 14px;display:flex;flex-direction:column;gap:6px}
+.model .mk{margin-right:6px}
 .model{text-align:left;padding:10px 12px;border-radius:13px;border:1px solid transparent;transition:.15s;width:100%}
 .model:hover{background:rgba(255,255,255,.7)}
 .model.on{background:rgba(255,255,255,.9);border-color:var(--line-2);box-shadow:0 6px 16px rgba(47,123,255,.14)}
@@ -86,7 +72,7 @@ button{cursor:pointer;background:none;border:0}
 
 /* Main */
 .main{flex:1;min-width:0;border-radius:var(--radius);display:flex;flex-direction:column;overflow:hidden}
-.top{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line)}
 .icon{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;font-size:18px;flex:none}
 .cur{min-width:0;flex:1}
 .cur b{display:block;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -193,6 +179,8 @@ button{cursor:pointer;background:none;border:0}
 .modal-card{width:min(520px,100%);max-height:min(640px,86vh);display:flex;flex-direction:column;border-radius:var(--radius);border:1px solid rgba(255,255,255,.95);background:rgba(250,252,255,.88);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);box-shadow:0 24px 70px rgba(30,70,160,.28),inset 0 1px 0 #fff;overflow:hidden}
 .modal-head{display:flex;align-items:center;gap:10px;padding:12px 14px 12px 18px;border-bottom:1px solid var(--line)}
 .modal-head b{flex:1;font-size:15px}
+.modal-head .search{flex:1;min-width:0}
+#modelModal .models{min-height:120px}
 .modal-head .icon{width:36px;height:36px;font-size:15px}
 .hist-list{overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:6px}
 .hitem{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:13px;border:1px solid transparent;cursor:pointer;transition:.15s}
@@ -204,7 +192,6 @@ button{cursor:pointer;background:none;border:0}
 .hitem .ht small{color:var(--muted);font-size:11.5px}
 .hdel{flex:none;width:30px;height:30px;border-radius:9px;border:1px solid var(--line);color:var(--muted);font-size:13px}
 .hdel:hover{color:var(--danger);border-color:rgba(229,72,77,.5)}
-.scrim{display:none}
 ::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:rgba(47,110,220,.25);border-radius:9px}
 
 /* Mobile */
@@ -212,11 +199,7 @@ button{cursor:pointer;background:none;border:0}
   .app{padding:0;gap:0}
   .main{border-radius:0;border:0}
   .icon{display:grid}
-  .side{position:fixed;z-index:30;top:0;bottom:0;left:0;width:min(88vw,340px);border-radius:0 var(--radius) var(--radius) 0;transform:translateX(-105%);
-    padding-top:env(safe-area-inset-top);background:rgba(244,249,255,.86)}
-  body.open .side{transform:none}
-  .scrim{position:fixed;inset:0;z-index:20;background:rgba(30,60,120,.3);backdrop-filter:blur(3px)}
-  body.open .scrim{display:block}
+  .top{padding-top:calc(12px + env(safe-area-inset-top))}
   .av{display:none}
   .hint{display:none}
   .bubble{font-size:14.5px}
@@ -224,9 +207,9 @@ button{cursor:pointer;background:none;border:0}
 }
 
 /* Ikon tanpa bingkai */
-.icon,.icon.glass,#hist,#clear,.hdel{border:0;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
-#hist,#clear{padding:6px 8px;font-size:18px;line-height:1}
-.icon:hover,#hist:hover,#clear:hover,.hdel:hover{box-shadow:none;text-shadow:0 0 12px var(--glow)}
+.icon,.icon.glass,#hist,#clear,#msearch,#newChat,.hdel{border:0;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+#hist,#clear,#msearch,#newChat{padding:6px 8px;font-size:18px;line-height:1}
+.icon:hover,#hist:hover,#clear:hover,#msearch:hover,#newChat:hover,.hdel:hover{box-shadow:none;text-shadow:0 0 12px var(--glow)}
 .hdel:hover{text-shadow:0 0 10px rgba(229,72,77,.6)}
 
 @media (prefers-reduced-motion:reduce){
@@ -236,25 +219,12 @@ button{cursor:pointer;background:none;border:0}
 </head>
 <body>
 <div class="app">
-  <aside class="side glass" id="side">
-    <div class="brand"><div class="logo">AI</div><h1>Ai<span>Koe</span></h1><button class="icon glass" id="collapse" aria-label="Tutup sidebar" title="Tutup sidebar (Ctrl+B)">«</button></div>
-    <div class="cats" role="tablist" aria-label="Kategori">
-      <button class="cat" id="catChat" role="tab" type="button">💬 Asisten</button>
-      <button class="cat" id="catImage" role="tab" type="button">🎨 Gambar</button>
-      <button class="cat" id="catVideo" role="tab" type="button">🎬 Video</button>
-    </div>
-    <div class="side-actions">
-      <button class="btn primary" id="newChat">＋ Chat baru</button>
-      <input class="search" id="q" placeholder="Cari model assistant…" autocomplete="off">
-    </div>
-    <div class="models" id="models"><div class="empty-models">Memuat model…</div></div>
-  </aside>
-  <div class="scrim" id="scrim"></div>
 
   <main class="main glass">
     <header class="top">
-      <button class="icon glass" id="menu" aria-label="Buka sidebar" title="Buka sidebar (Ctrl+B)">☰</button>
       <div class="cur"><b id="curName">Memuat…</b></div>
+      <button class="btn" id="newChat" title="Chat baru" aria-label="Chat baru">＋</button>
+      <button class="btn" id="msearch" title="Cari model (Ctrl+K)" aria-label="Cari model">🔍</button>
       <button class="btn" id="hist" title="Riwayat percakapan" aria-label="Riwayat percakapan">🕘</button>
       <button class="btn" id="clear" title="Bersihkan layar (riwayat tetap tersimpan)" aria-label="Bersihkan layar">🗑</button>
     </header>
@@ -285,6 +255,16 @@ button{cursor:pointer;background:none;border:0}
       <div class="hint">Enter untuk kirim · Shift+Enter baris baru</div>
     </footer>
   </main>
+</div>
+
+<div class="modal" id="modelModal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-label="Cari model">
+    <div class="modal-head">
+      <input class="search" id="q" placeholder="Cari model (chat, gambar, video)…" autocomplete="off">
+      <button class="icon glass" id="mClose" type="button" aria-label="Tutup">✕</button>
+    </div>
+    <div class="models" id="models"></div>
+  </div>
 </div>
 
 <div class="modal" id="histModal" hidden>
@@ -385,56 +365,42 @@ async function loadModels() {
 
 function renderModels() {
   const box = $('#models'); box.replaceChildren();
-  const isImg = state.category === 'image';
-  $('#q').hidden = false;
-  const kind = state.category, isMedia = kind === 'image' || kind === 'video';
-  if (isMedia) {
-    const list = kind === 'image' ? state.imageList : state.videoList;
-    const active = kind === 'image' ? curImage() : curVideo();
-    if (kind === 'image' && state.imageMissing.length) box.append(el('div', 'miss', `⚠ Tidak ditemukan di workspace: ${state.imageMissing.join(', ')}.` + (list.length ? '' : ' Menampilkan semua model gambar yang tersedia.')));
-    if (!list.length) return box.append(el('div', 'empty-models' + (kind === 'video' && state.videoError ? ' err' : ''), kind === 'video' && state.videoError ? state.videoError : `Model ${kind === 'image' ? 'gambar' : 'video'} belum tersedia`));
-    const iq = state.query.trim().toLowerCase();
-    const shown = list.filter((m) => !iq || [m.name, m.provider ?? '', m.model_id, ...(m._variants || []).map((v) => v.name)].join(' ').toLowerCase().includes(iq));
-    if (!shown.length) return box.append(el('div', 'empty-models', 'Model tidak ditemukan'));
-    for (const m of shown) {
-      const b = el('button', 'model' + (m.model_id === active?.model_id ? ' on' : ''));
-      b.append(el('b', '', kind === 'video' ? (m._label || m.name) : m.name));
-      b.onclick = () => {
-        if (kind === 'image') { state.imageModelId = m.model_id; store.set('aichat.imgmodel', m.model_id); }
-        else { state.videoModelId = m.model_id; store.set('aichat.vidmodel', m.model_id); }
-        renderModels(); renderHeader(); document.body.classList.remove('open');
-      };
+  const q = state.query.trim().toLowerCase();
+  if (!q) return box.append(el('div', 'empty-models', 'Ketik nama model untuk mencari'));
+  const hay = (m) => [m.name, m.provider ?? '', m.model_id, ...(m._variants || []).map((v) => v.name)].join(' ').toLowerCase();
+  const groups = [
+    { kind: 'chat', icon: '💬', list: state.models, cur: cur(), pick: (m) => { state.modelId = m.model_id; store.set('aichat.model', m.model_id); } },
+    { kind: 'image', icon: '🎨', list: state.imageList, cur: curImage(), pick: (m) => { state.imageModelId = m.model_id; store.set('aichat.imgmodel', m.model_id); } },
+    { kind: 'video', icon: '🎬', list: state.videoList, cur: curVideo(), pick: (m) => { state.videoModelId = m.model_id; store.set('aichat.vidmodel', m.model_id); } },
+  ];
+  let n = 0;
+  for (const g of groups) {
+    for (const m of g.list.filter((x) => hay(x).includes(q))) {
+      n++;
+      const on = state.category === g.kind && m.model_id === g.cur?.model_id;
+      const b = el('button', 'model' + (on ? ' on' : '')); b.type = 'button';
+      const t = el('b', '', g.kind === 'video' ? (m._label || m.name) : m.name);
+      t.prepend(el('span', 'mk', g.icon));
+      b.append(t);
+      b.onclick = () => { g.pick(m); setCategory(g.kind); closeModelSearch(); };
       box.append(b);
     }
-    return;
   }
+  if (n) return;
   if (!state.models.length && state.modelsError) {
     box.append(el('div', 'empty-models err', state.modelsError));
     const rb = el('button', 'btn', '↻ Coba lagi'); rb.type = 'button';
     rb.onclick = () => { box.replaceChildren(el('div', 'empty-models', 'Memuat model…')); loadModels(); };
     return box.append(rb);
   }
-  const q = state.query.toLowerCase();
-  const list = state.models.filter((m) => (!q || `${m.name} ${m.provider ?? ''} ${m.model_id}`.toLowerCase().includes(q)));
-  if (!list.length) return box.append(el('div', 'empty-models', 'Model tidak ditemukan'));
-  for (const m of list) {
-    const b = el('button', 'model' + (m.model_id === state.modelId ? ' on' : ''));
-    b.append(el('b', '', m.name));
-    b.onclick = () => { state.modelId = m.model_id; store.set('aichat.model', m.model_id); renderModels(); renderHeader(); document.body.classList.remove('open'); };
-    box.append(b);
-  }
+  box.append(el('div', 'empty-models', 'Model tidak ditemukan'));
 }
 
 function setCategory(c) {
   if (!['chat', 'image', 'video'].includes(c)) c = 'chat';
   state.category = c; store.set('aichat.cat', c);
-  for (const [k, sel] of Object.entries({ chat: '#catChat', image: '#catImage', video: '#catVideo' })) {
-    $(sel).classList.toggle('on', c === k); $(sel).setAttribute('aria-selected', c === k);
-  }
   $('#imgBar').hidden = c !== 'image'; $('#vidBar').hidden = c !== 'video';
   $('#input').placeholder = c === 'image' ? 'Deskripsikan gambar yang ingin dibuat…' : c === 'video' ? 'Deskripsikan video yang ingin dibuat…' : 'Tulis pesan…';
-  $('#q').placeholder = c === 'image' ? 'Cari model gambar…' : c === 'video' ? 'Cari model video…' : 'Cari model assistant…';
-  if (state.catShown !== c) { state.query = ''; $('#q').value = ''; state.catShown = c; } // pencarian dikosongkan saat pindah kategori
   renderModels(); renderHeader(); if (!state.messages.length) renderFeed();
 }
 
@@ -808,9 +774,12 @@ const SYS = 'Catatan format: jika pengguna meminta game, website, aplikasi, UI, 
 const BUILD_RE = /\b(game|permainan|website|web|situs|aplikasi|app|ui|animasi|landing|halaman|html|css|canvas|simulasi|kalkulator|calculator|dashboard|visual|desain|snake|tetris)\b/i;
 
 // Pesan biasa dikirim apa adanya (model berperilaku normal sesuai namanya); catatan format hanya ditambahkan untuk permintaan membuat game/web/app.
+// Identitas asisten: dipasang di awal setiap prompt teks agar sapaan dijawab sebagai AiKoe (bukan nama platform di belakangnya)
+const IDENTITY = 'Instruksi: Kamu adalah AiKoe, asisten AI yang ramah. Saat menyapa atau ditanya siapa kamu, perkenalkan dirimu sebagai AiKoe. Jangan menyebut dirimu Flora atau nama platform lain. Balas dalam bahasa yang dipakai pengguna.';
 function buildPrompt(text, type, hint) {
   const core = buildPromptCore(text, type);
-  return BUILD_RE.test(hint ?? text) ? SYS + '\n\n' + core : core;
+  const body = BUILD_RE.test(hint ?? text) ? SYS + '\n\n' + core : core;
+  return type === 'text' ? IDENTITY + '\n\n' + body : body;
 }
 
 function buildPromptCore(text, type) {
@@ -833,7 +802,7 @@ async function send(override) {
   if (state.busy) return;
   if (isImg && !curImage()) return updateNote('Model gambar belum tersedia di workspace kamu.');
   if (isVid && !curVideo()) return updateNote('Model video belum tersedia di workspace kamu.');
-  if (!isImg && !isVid && !m) return updateNote('Model belum dimuat. Muat ulang daftar model di sidebar.');
+  if (!isImg && !isVid && !m) return updateNote('Model belum dimuat. Muat ulang halaman, atau cari model lewat ikon 🔍.');
   if (!override && state.attachments.some((a) => a.status === 'uploading')) return updateNote('Tunggu unggahan file selesai…');
   let files = override ? [] : state.attachments.filter((a) => a.status === 'ready');
   if (!override && (isImg || isVid)) {
@@ -867,13 +836,14 @@ async function send(override) {
   renderFeed();
   const promptBase = override ? override.prompt : composeWithFiles(text, files);
   const imgOpts = im ? getImageOpts(text, im) : null;
-  const vidOpts = vm ? getVideoOpts(text, vm) : null;
+  const vidOpts = vm ? getVideoOpts(text, vm, files) : null;
 
   // Susun params: hanya parameter wajib ber-default (+ referensi). `minimal` = hanya referensi.
   const buildParams = (target, mode) => {
     const params = {};
     if (mode === 'full' || mode === 'long') for (const p of target.params || []) {
       if (!p.required || p.name === 'prompt' || isRefParam(p)) continue;
+      if (vm && followsRefDur(target, files) && p === videoParamMap(target.params || []).dp) continue; // jangan paksa durasi default (mis. 5 dtk)
       if (p.default != null && typeof p.default !== 'object') params[p.name] = p.default;
       else if (optsOf(p).length) params[p.name] = optsOf(p)[0]; // wajib tanpa default -> opsi pertama agar tidak ditolak
     }
@@ -881,6 +851,14 @@ async function send(override) {
     Object.assign(params, vm ? vidRefParams(target, files) : refParams(target, im ? files.filter((f) => (f.type || '').startsWith('image/')) : files));
     if (im && mode !== 'hint') Object.assign(params, applyImageOpts(target, imgOpts).params);
     if (vm && mode !== 'hint') Object.assign(params, applyVideoOpts(target, vidOpts).params);
+    if (vm && followsRefDur(target, files)) { // motion control: durasi mengikuti video referensi
+      const dp = videoParamMap(target.params || []).dp;
+      if (dp) {
+        delete params[dp.name];
+        const sec = refVideoDur(files);
+        if (dp.required && sec) params[dp.name] = refDurValue(dp, sec);
+      }
+    }
     return params;
   };
   let extra = ''; // catatan tambahan saat mencoba ulang versi ringkas
@@ -1342,12 +1320,39 @@ function videoParamMap(ps) {
     rp: ps.find((x) => /^(resolution|video[_-]?resolution|quality|video[_-]?quality)$/i.test(x.name) && optsOf(x).length) || null,
   };
 }
-function getVideoOpts(text, model) {
+// Model "motion control" (Kling Motion dst.): durasi hasil HARUS mengikuti video referensi, jadi durasi tidak boleh dikirim/dipaksa.
+const isMotionModel = (m) => !!m && /motion/i.test(`${m.name || ''} ${m.model_id || ''}`);
+const followsRefDur = (m, files) => isMotionModel(m) && (files || []).some((f) => fileKind(f) === 'video');
+const refVideoDur = (files) => { const f = (files || []).find((x) => fileKind(x) === 'video' && x.duration > 0); return f ? f.duration : null; };
+// Baca durasi video di browser (dipakai hanya jika model motion mewajibkan parameter durasi)
+function probeDuration(a) {
+  return new Promise((res) => {
+    const v = document.createElement('video'), u = URL.createObjectURL(a.file);
+    const done = (d) => { URL.revokeObjectURL(u); v.removeAttribute('src'); res(d); };
+    v.preload = 'metadata';
+    v.onloadedmetadata = () => done(isFinite(v.duration) ? v.duration : 0);
+    v.onerror = () => done(0);
+    v.src = u;
+  });
+}
+// Isi parameter durasi wajib dengan durasi video referensi (opsi terdekat jika berupa daftar pilihan)
+function refDurValue(dp, sec) {
+  const op = optsOf(dp);
+  if (op.length) {
+    let best = null, d = Infinity;
+    for (const c of op) { const n = parseFloat(String(c).replace(/[^\d.]/g, '')); if (isNaN(n)) continue; if (Math.abs(n - sec) < d) { d = Math.abs(n - sec); best = c; } }
+    return best;
+  }
+  if (/int/i.test(String(dp.type))) return Math.round(sec);
+  if (/num|float/i.test(String(dp.type))) return +sec.toFixed(2);
+  return String(Math.round(sec));
+}
+function getVideoOpts(text, model, files) {
   const c = videoCaps(model), s = state.vidOpts, t = text.toLowerCase();
   const has = (list, v) => !!v && (list || []).some((x) => x.value === v);
-  const o = { ratio: has(c.ratio, s.ratio) ? s.ratio : '', dur: has(c.dur, s.dur) ? s.dur : '', res: has(c.res, s.res) ? s.res : '' };
+  const o = { ratio: has(c.ratio, s.ratio) ? s.ratio : '', dur: has(c.dur, s.dur) && !followsRefDur(model, files) ? s.dur : '', res: has(c.res, s.res) ? s.res : '' };
   if (!o.ratio) { const r = parseImageOpts(text).ratio; if (r) o.ratio = r; }
-  if (!o.dur) { const m = t.match(/(?<![\d:.])(\d{1,2})\s*(?:detik|dtk|sec(?:ond)?s?|s)\b/); if (m && +m[1] >= 1 && +m[1] <= 60) o.dur = m[1]; }
+  if (!o.dur && !followsRefDur(model, files)) { const m = t.match(/(?<![\d:.])(\d{1,2})\s*(?:detik|dtk|sec(?:ond)?s?|s)\b/); if (m && +m[1] >= 1 && +m[1] <= 60) o.dur = m[1]; }
   return o;
 }
 function applyVideoOpts(m, o) {
@@ -1477,6 +1482,7 @@ function addFiles(list) {
   for (const file of all.slice(0, room)) {
     const a = { id: ++attSeq, name: file.name || 'file', type: file.type || '', size: file.size, file, status: 'uploading' };
     if (a.type.startsWith('image/')) a.preview = URL.createObjectURL(file);
+    if (a.type.startsWith('video/')) probeDuration(a).then((d) => { a.duration = d; });
     state.attachments.push(a);
     if (file.size > MAX_SIZE) { a.status = 'error'; a.error = 'Maksimal 20 MB'; }
     else if (isTextFile(file)) readText(a);
@@ -1629,7 +1635,9 @@ function renderPanel() {
   } else if (cat === 'video') {
     const c = videoCaps(m);
     fillSelect($('#selVRatio'), c.ratio, state.vidOpts.ratio, off, why);
-    fillSelect($('#selVDur'), c.dur, state.vidOpts.dur, off, why);
+    const follow = followsRefDur(m, state.attachments.filter((a) => a.status === 'ready'));
+    if (follow) { fillSelect($('#selVDur'), null, '', 'Ikut video referensi', ''); $('#selVDur').title = 'Durasi hasil mengikuti video referensi yang diunggah'; }
+    else fillSelect($('#selVDur'), c.dur, state.vidOpts.dur, off, why);
     fillSelect($('#selVRes'), c.res, state.vidOpts.res, off, why);
     $('#lVRes').hidden = !c.res;
   }
@@ -1660,10 +1668,22 @@ $('#selQP').onchange = (e) => { state.imgOpts.q = e.target.value; saveImg(); };
 $('#selVRatio').onchange = (e) => { state.vidOpts.ratio = e.target.value; saveVid(); };
 $('#selVDur').onchange = (e) => { state.vidOpts.dur = e.target.value; saveVid(); };
 $('#selVRes').onchange = (e) => { state.vidOpts.res = e.target.value; saveVid(); };
-$('#catVideo').onclick = () => setCategory('video');
-$('#catChat').onclick = () => setCategory('chat');
-$('#catImage').onclick = () => setCategory('image');
 $('#q').addEventListener('input', (e) => { state.query = e.target.value; renderModels(); });
+// Pencarian model: daftar model tersembunyi, hanya muncul lewat ikon 🔍
+function openModelSearch() {
+  if (!$('#histModal').hidden) closeHistory();
+  state.query = ''; $('#q').value = ''; renderModels();
+  $('#modelModal').hidden = false; document.body.classList.remove('open');
+  setTimeout(() => $('#q').focus(), 0);
+}
+function closeModelSearch() { $('#modelModal').hidden = true; state.query = ''; $('#q').value = ''; renderModels(); }
+$('#msearch').onclick = openModelSearch;
+$('#mClose').onclick = closeModelSearch;
+$('#modelModal').addEventListener('mousedown', (e) => { if (e.target.id === 'modelModal') closeModelSearch(); });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !$('#modelModal').hidden) closeModelSearch();
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openModelSearch(); }
+});
 // Chat baru: percakapan lama tetap tersimpan di riwayat
 function newConv() {
   if (state.busy) return;
@@ -1709,7 +1729,7 @@ function delHistory(id) {
   if (id === state.convId) newConv();
   renderHistory();
 }
-function openHistory() { renderHistory(); $('#histModal').hidden = false; document.body.classList.remove('open'); }
+function openHistory() { if (!$('#modelModal').hidden) closeModelSearch(); renderHistory(); $('#histModal').hidden = false; document.body.classList.remove('open'); }
 function closeHistory() { $('#histModal').hidden = true; }
 $('#hist').onclick = openHistory;
 $('#histClose').onclick = closeHistory;
@@ -1719,22 +1739,10 @@ $('#histClear').onclick = () => {
   state.history = []; persistHistory(); newConv(); renderHistory();
 };
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('#histModal').hidden) closeHistory(); });
-const isMobile = () => matchMedia('(max-width:860px)').matches;
-function setSide(open) {
-  if (isMobile()) document.body.classList.toggle('open', open);
-  else { document.body.classList.toggle('collapsed', !open); store.set('aichat.collapsed', !open); }
-}
-const sideOpen = () => (isMobile() ? document.body.classList.contains('open') : !document.body.classList.contains('collapsed'));
-$('#menu').onclick = () => setSide(true);
-$('#collapse').onclick = () => setSide(false);
-document.addEventListener('keydown', (e) => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') { e.preventDefault(); setSide(!sideOpen()); } });
-if (store.get('aichat.collapsed', false)) document.body.classList.add('collapsed');
-$('#scrim').onclick = () => document.body.classList.remove('open');
 
 // pesan pending yang tersisa dari sesi lama dibersihkan
 state.messages = state.messages.filter((m) => !m.pending);
 if (state.messages.length && !state.convId) save(); // percakapan lama (sebelum fitur riwayat) masuk ke riwayat
-for (const [k, sel] of Object.entries({ chat: '#catChat', image: '#catImage', video: '#catVideo' })) $(sel).classList.toggle('on', state.category === k || (k === 'chat' && !['image', 'video'].includes(state.category)));
 $('#imgBar').hidden = state.category !== 'image'; $('#vidBar').hidden = state.category !== 'video';
 renderFeed(); loadModels();
 </script>
