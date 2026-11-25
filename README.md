@@ -1,22 +1,20 @@
-# AICHAT
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-Web AI assistant bertema **Glass Black Green** dengan model assistant (teks) dari Flora.ai.
+# Run and deploy your AI Studio app
 
-## Jalankan
-1. Pastikan Node.js 18+ terpasang.
-2. Salin `.env.example` menjadi `.env`, lalu isi:
-   - `FLORA_API_KEY`
-   - `FLORA_WORKSPACE_ID` (diawali `ws_`)
-3. Jalankan `npm start`, lalu buka http://localhost:3000
+This contains everything you need to run your app locally.
 
-## Catatan
-- API key hanya ada di server (`server.js`), tidak pernah dikirim ke browser.
-- Endpoint: `https://app.flora.ai/api/v1` (`GET /models?type=text`, `POST /generate`, `GET /runs/{id}`).
-- Flora `/generate` butuh `project_id`; server otomatis mencari/membuat project bernama "AICHAT" di workspace Anda. Jika key tidak punya izin membuat project, isi `FLORA_PROJECT_ID` di `.env`.
-- Daftar model diambil langsung dari Flora, jadi selalu mengikuti katalog terbaru.
+View your app in AI Studio: https://ai.studio/apps/4cd0c780-9c6b-44ec-b1c4-b2aa84d168c7
 
-- Jawaban yang berisi kode ditampilkan dengan blok kode + tombol Salin. Kode HTML/SVG (misalnya game) otomatis punya tab Preview (iframe sandbox), Layar penuh, Unduh, dan Muat ulang.
+## Run Locally
 
-- Tombol **＋** di kolom chat: unggah banyak file referensi sekaligus (klik, drag & drop, atau paste). File teks/kode dibaca langsung ke prompt; gambar/dokumen diunggah ke Flora Assets lalu dikirim ke model (lewat parameter input file model bila ada, atau sebagai tautan di prompt). Maks 10 file, 20 MB per file.
-- PDF, Word (.docx), dan Excel diekstrak isinya langsung di browser (library dimuat dari cdnjs saat dibutuhkan) lalu dimasukkan ke prompt. Jika gagal (mis. PDF hasil scan), file diunggah dan dikirim sebagai tautan.
-- Permintaan membuat gambar (mis. "buatkan gambar kucing", "buat logo kopi", atau awali dengan `/gambar`) otomatis memakai model gambar Flora dan hasilnya tampil langsung di chat. Model gambar tidak ditampilkan di sidebar. Jika ada gambar terlampir dan Anda meminta mengubahnya ("ubah jadi gaya anime"), dipilih model gambar yang menerima gambar referensi.
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
